@@ -51,7 +51,8 @@ This is the workflow the script performs:
 
 Captures
 ```
-The script output will tell you when a capture is collected, but many like to run this over an extended
-time (ie: overnight), so just take a look in your handshake directory and you'll see everything that
-was collected.  By default it's in /root/handshakes on the Wifi Pineapple device.
+The script output will tell you when a capture is collected, but many like to run this over
+an extended time (ie: overnight), so just take a look in the Pineapple UI or your handshake 
+directory and you'll see everything that was collected.  By default it's in /root/handshakes 
+on the Wifi Pineapple device.
 ```
