@@ -1,8 +1,7 @@
 import requests
 import time
-import json
 
-# Configuration
+# config
 config = {
     'server_ip': "172.16.42.1",
     'server_port': 1471,
@@ -26,12 +25,6 @@ def authenticate():
     return response.json()['token']
 
 auth_token = authenticate()
-#head = {'Authorization': f'Bearer {auth_token}'}
-#response = requests.get('http://172.16.42.1:1471/api/notifications', headers=head)
-#print(response.status_code)
-#print(response.text)
-#print(head)
-#exit()
 
 def authorized_request(method, resource, params=None, stdout=None):
     if stdout:
@@ -96,7 +89,7 @@ def run_scand():
         'scan_time': 0,
         'band': '0'
     }, "Starting a continuous recon scan")
-    print(scan)
+    
     if scan.get('scanRunning') != 1:
         print("> Recon scan failed, check logs")
         exit()
@@ -154,7 +147,7 @@ def run_scand():
 
 def main():
     print("> Starting berserker.py by salt-or-ester")
-    print("> https://github.com/sailboat-anon/")
+    print("> https://gitgud.io/saltorester/wifi-pineapple-berserker/")
     run_scand()
 
 if __name__ == "__main__":
