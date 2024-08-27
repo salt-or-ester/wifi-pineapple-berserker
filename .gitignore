@@ -9,3 +9,6 @@ include
 lib
 lib64
 .DS_Store
+features.txt
+logs
+handshakes
