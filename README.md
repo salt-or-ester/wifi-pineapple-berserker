@@ -1,7 +1,7 @@
 # wifi-pineapple-berserker
-Automate your Wifi Pineapple Mk. 7 Workflow!
+Brute force your Wifi Pineapple Mk. 7 Handshake Workflow!
 
-Author: salt-or-ester
+Author: salt-or-ester (geek with a cold heart)
 
 Source: https://gitgud.io/saltorester/wifi-pineapple-berserker/
 
@@ -16,8 +16,8 @@ ___.                                          __                    ._.._.._.
                                                                                
  ```                                                                                                                                                                                                                                       
 
-This simple python script is an aggressive war-driver for the [Hak Wifi Pineapple Mark VII](https://shop.hak5.org/products/wifi-pineapple) to fully automate your recon, 
-de-authing and handshake capturing.  Turn this thing on, take your Pineapple for a walk around town, and collect those handshakes without any effort.
+This simple python script is an aggressive handshake brute-forcer for the [Hak Wifi Pineapple Mark VII](https://shop.hak5.org/products/wifi-pineapple) to fully automate your recon, 
+de-authing and handshake capturing.  Turn this thing on, take your Pineapple for a walk around town, and collect handshakes without any effort.
 
 Requirements:
 ```
@@ -33,8 +33,8 @@ pip install -r requirements.txt
 Use:
 ```
 Run on your local machine, not the Wifi Pineapple (better performance)
-- edit berserker.py
-- Modify "config" to match the server, port, username, password for your Wifi Pineapple. 
+- Edit berserker.py
+- Modify "config" to match the pineapple server, port, username, password, etc
 - python3 berserker.py
 ```
 

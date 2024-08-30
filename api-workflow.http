@@ -1,0 +1,124 @@
+# build a custom workflow using humao's rest client for vs code
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+# https://hak5.github.io/mk7-docs/docs/rest/rest/
+
+@hostname = 172.16.42.1
+@port = 1471
+@host = {{hostname}}:{{port}}
+@userName = root
+@password = 1111
+@contentType = application/json
+@authEndpoint = /api/login
+@settingsEndpoint = /api/pineap/settings
+@reconStatusEndpoint = /api/recon/status
+@reconStopEndpoint = /api/recon/stop
+@reconStartEndpoint = /api/recon/start
+
+# authenticate/capture token
+# @name auth
+POST http://{{host}}{{authEndpoint}} HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+    "username": "{{userName}}", 
+    "password": "{{password}}"
+}
+
+###
+@token = {{auth.response.body.token}}
+###
+
+# @name settings
+PUT http://{{host}}{{settingsEndpoint}} HTTP/1.1
+Content-Type: {{contentType}}
+Authorization: Bearer {{token}}
+
+{
+    "mode": "advanced",
+    "settings": 
+                {
+                    "ap_channel": "11",
+                    "autostart": true,
+                    "autostartPineAP": true,
+                    "beacon_interval": "AGGRESSIVE",
+                    "beacon_response_interval": "AGGRESSIVE",
+                    "broadcast_ssid_pool": true,
+                    "capture_ssids": true,
+                    "connect_notifications": false,
+                    "disconnect_notifications": false,
+                    "enablePineAP": true,
+                    "karma": true,
+                    "logging": true,
+                    "pineap_mac": "00:13:37:A8:1C:BB",
+                    "target_mac": "FF:FF:FF:FF:FF:FF"
+                    }
+}
+
+###
+
+# @name checkReconStatus
+GET http://{{host}}{{reconStatusEndpoint}} HTTP/1.1
+Content-Type: {{contentType}}
+Authorization: Bearer {{token}}
+
+###
+
+# @name stopReconScan
+POST http://{{host}}{{reconStopEndpoint}} HTTP/1.1
+Content-Type: {{contentType}}
+Authorization: Bearer {{token}}
+
+###
+
+# @name startReconScan
+POST http://{{host}}{{reconStartEndpoint}} HTTP/1.1
+Content-Type: {{contentType}}
+Authorization: Bearer {{token}}
+
+{
+    "autoHandshake": true,
+    "live": true,
+    "scan_time": 0,
+    "band": "0"
+}
+
+###
+
+@scanID = {{startReconScan.response.body.scanID}}
+
+###
+
+# @name scanDetails
+@scanID = 59
+GET http://{{host}}/api/recon/scans/{{scanID}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{token}}
+
+###
+
+# @name previousClients
+
+GET http://{{host}}/api/pineap/previousclients
+Content-Type: {{contentType}}
+Authorization: Bearer {{token}}
+
+###
+
+# @name connectedClients
+GET http://{{host}}/api/pineap/clients
+Content-Type: {{contentType}}
+Authorization: Bearer {{token}}
+
+###
+
+# @name handshakeRunning
+GET http://{{host}}/api/pineap/handshakes/check
+Content-Type: {{contentType}}
+Authorization: Bearer {{token}}
+
+###
+
+# @name getHandshakes
+GET http://{{host}}/api/pineap/handshakes
+Content-Type: {{contentType}}
+Authorization: Bearer {{token}}
