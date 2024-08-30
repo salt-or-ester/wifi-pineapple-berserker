@@ -3,7 +3,6 @@ import time
 import logging
 import os
 from datetime import datetime
-import json
 
 # wifi pineapple settings
 config = {
@@ -135,7 +134,6 @@ def run_scand():
                             "channel": ap.get('channel'),
                             "clients": client_macs
                         }
-                        
                         
                         authorized_request("POST", "/api/pineap/deauth/ap", deauth_payload, f"De-authing AP {ap.get('ssid')} and all connected clients.")
                         log_and_print(f"> De-authing again in {config.get('ap_deauth_sleep')}. Cycle: {i+1} of {config.get('ap_deauth_cycles')}")
