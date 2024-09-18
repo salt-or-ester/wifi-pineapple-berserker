@@ -2,7 +2,7 @@
 # https://marketplace.visualstudio.com/items?itemName=humao.rest-client
 # https://hak5.github.io/mk7-docs/docs/rest/rest/
 
-@hostname = 172.16.42.1
+@hostname = 127.0.0.1
 @port = 1471
 @host = {{hostname}}:{{port}}
 @userName = root
