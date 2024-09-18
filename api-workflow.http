@@ -1,8 +1,11 @@
+# this file is for educational purposes and does not impact berserker.py in any way
+# salt-or-ester : https://gitgud.io/saltorester : salt-or-ester@protonmail.com
+#
 # build a custom workflow using humao's rest client for vs code
 # https://marketplace.visualstudio.com/items?itemName=humao.rest-client
 # https://hak5.github.io/mk7-docs/docs/rest/rest/
 
-@hostname = 127.0.0.1
+@hostname = 172.16.42.1
 @port = 1471
 @host = {{hostname}}:{{port}}
 @userName = root
